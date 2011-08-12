@@ -33,7 +33,6 @@ def dynamic_slice_left(sequence, left):
     except TypeError:
         return sequence
 
-
 @register.filter
 def dynamic_slice_right(sequence, right):
     """Slice function that allows variable as argument. It will return sequence[:right]."""
