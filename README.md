@@ -29,7 +29,8 @@ The SimplePaginator object accepts the following keyword arguments:
 * `per_page` -- How many elements to display per page (default 20)
 * `orphans` -- Whether to move orphans to the previous page (default 1)
 
-In the view, use the `paginate()`-shortcutfunction to return pagination items.
+In the view, use the `paginate()`-shortcutfunction to return pagination items. Remember that each
+pagination on a page must have a distinct prefix.
 
 ### Example:
 
@@ -95,9 +96,6 @@ If the column feature is not used, some parts can be omitted:
     {% include 'simple_paginator/paginator_control.html' %}
 </div>
 ```
-
- * Each pagination on a page must have a distinct prefix.
- * Including of the `pagination_header.html` is optional if column feature isn't used
 
 Customize
 ---------
