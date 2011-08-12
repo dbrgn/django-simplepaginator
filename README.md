@@ -20,6 +20,15 @@ Then add messagegroups to your `INSTALLED_APPS` setting.
 Usage
 -----
 
+The SimplePaginator object accepts the following keyword arguments:
+
+* `request` -- The request object
+* `prefix` -- The prefix for the controls' css-class and for the GET parameters
+* `data` -- Elements to paginate
+* `columns` -- A tuple of tuples containing column name and key (default None)
+* `per_page` -- How many elements to display per page (default 20)
+* `orphans` -- Whether to move orphans to the previous page (default 1)
+
 In the view, use the `paginate()`-shortcutfunction to return pagination items.
 
 ### Example:
