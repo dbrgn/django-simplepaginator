@@ -1,0 +1,61 @@
+{% load helpers %}
+
+{% with num_pages=items.paginator.num_pages current_page=items.number ellipsis='<span class="disabled">...</span>' %}
+
+{% if num_pages > 1 %}
+    <div class="paginator_control">
+
+        {% comment %}
+            1. If max_page <= 9:
+                - No dots
+            2. If max_page > 9 and page <= 5:
+                - Right dots
+            3. If max_page > 9 and page > 5 and (max_page - page > 5):
+                - Right and left dots
+            4. Else
+                - Left dots
+        {% endcomment %}
+
+        {% if num_pages <= 9 %}
+            {% for page in items.paginator.page_range %}
+                {% if page = current_page %}
+                <a class="active">{{ page }}</a>
+                {% else %}
+                <a href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if current_page <= 5 %}
+                {% for page in items.paginator.page_range|slice:":7" %}
+                <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                {% endfor %}
+                {{ ellipsis }}
+                <a href="?{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
+            {% else %}
+                {% if num_pages|subtract:current_page <= 5 %}
+                    <a href="?{{ prefix }}_pa=1">1</a>
+                    {{ ellipsis }}
+                    {% for page in items.paginator.page_range|slice:"-7:" %}
+                    <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                    {% endfor %}
+                {% else %}
+                    <a href="?{{ prefix }}_pa=1">1</a>
+                    {{ ellipsis }}
+                    {% with leftslice=current_page|subtract:3 %}
+                        {% for page in items.paginator.page_range|dynamic_slice_left:leftslice|slice:":5" %}
+                        <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                        {% endfor %}
+                    {% endwith %}
+                    {{ ellipsis }}
+                    <a href="?{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if items.paginator.count = 0 %}
+    <p>No items found.</p>
+{% endif %}
+
+{% endwith %}
