@@ -22,7 +22,7 @@ Usage
 
 In the view, use the `paginate()`-shortcutfunction to return pagination items.
 
-Example:
+### Example:
 
 ```python
 from django.shortcuts import render_to_response
@@ -88,7 +88,7 @@ If the column feature is not used, some parts can be omitted:
 ```
 
  * Each pagination on a page must have a distinct prefix.
- * Including of the `pagination\_header.html` is optional if column feature isn't used
+ * Including of the `pagination_header.html` is optional if column feature isn't used
 
 Customize
 ---------
