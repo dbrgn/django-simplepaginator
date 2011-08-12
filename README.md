@@ -15,16 +15,17 @@ Copy the messagegroups folder to your project or install it into your pythonpath
 
     # python setup.py install
 
-Then add messagegroups to your `INSTALLED\_APPS` setting.
+Then add messagegroups to your `INSTALLED_APPS` setting.
 
 Usage
 -----
 
-In the view, use the `paginate`-Shortcutfunction to return pagination items.
+In the view, use the `paginate()`-shortcutfunction to return pagination items.
 
 Example:
 
 ```python
+from django.shortcuts import render_to_response
 import simple_paginator
 
 try:
@@ -84,6 +85,7 @@ If the column feature is not used, some parts can be omitted:
 
     {% include 'simple_paginator/paginator_control.html' %}
 </div>
+```
 
  * Each pagination on a page must have a distinct prefix.
  * Including of the `pagination\_header.html` is optional if column feature isn't used
