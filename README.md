@@ -101,7 +101,7 @@ Customize
 ---------
 
 You can customize the paginator header and control templates by copying them to your project
-folder and editing them, or by adding completely new templates. They need to be put in a
+folder and editing them, or by adding completely new templates. They should be put in a
 directory called "simple_paginator" inside your template folder.
 
 License

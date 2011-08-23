@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+recursive-include simple_paginator/templates *
+recursive-include simple_paginator/templatetags *
+recursive-exclude * *.pyc

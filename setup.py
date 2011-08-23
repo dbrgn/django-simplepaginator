@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='simple_paginator',
       version='0.1',
@@ -9,9 +9,8 @@ setup(name='simple_paginator',
       author_email='webmaster@factor.ch',
       url='https://github.com/FactorAG/django-simplepaginator',
       license='LGPLv3',
+      keywords='django simple pagination paginator',
       packages=['simple_paginator', 'simple_paginator.templatetags'],
-      package_dir={'messagegroups': 'messagegroups'},
-      package_data={'simple_paginator': ['templates/*']},
       platforms=['any'],
       classifiers=[
           'Development Status :: 4 - Beta',
