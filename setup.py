@@ -3,14 +3,14 @@
 from setuptools import setup
 
 setup(name='simple_paginator',
-      version='0.1',
+      version='0.2',
       description='A simple wrapper around the Django paginator',
       author='Factor AG',
       author_email='webmaster@factor.ch',
       url='https://github.com/FactorAG/django-simplepaginator',
       license='LGPLv3',
       keywords='django simple pagination paginator',
-      packages=['simple_paginator', 'simple_paginator.templatetags'],
+      packages=['simple_paginator'],
       platforms=['any'],
       classifiers=[
           'Development Status :: 4 - Beta',
