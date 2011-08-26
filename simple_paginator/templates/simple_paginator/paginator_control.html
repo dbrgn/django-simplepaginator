@@ -19,35 +19,47 @@
         {% if num_pages <= 9 %}
             {% for page in items.paginator.page_range %}
                 {% if page = current_page %}
-                <a class="active">{{ page }}</a>
+                    <span class="active">{{ page }}</span>
                 {% else %}
-                <a href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                    <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ page }}">{{ page }}</a>
                 {% endif %}
             {% endfor %}
         {% else %}
             {% if current_page <= 5 %}
                 {% for page in items.paginator.page_range|slice:":7" %}
-                <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                    {% if page = current_page %}
+                        <span class="active" href="#">{{ page }}</span>
+                    {% else %}
+                        <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                    {% endif %}
                 {% endfor %}
                 {{ ellipsis }}
-                <a href="?{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
+                <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
             {% else %}
                 {% if num_pages|subtract:current_page <= 5 %}
-                    <a href="?{{ prefix }}_pa=1">1</a>
+                    <a href="{{ baseurl.pa }}{{ prefix }}_pa=1">1</a>
                     {{ ellipsis }}
                     {% for page in items.paginator.page_range|slice:"-7:" %}
-                    <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                        {% if page = current_page %}
+                            <span class="active" href="#">{{ page }}</span>
+                        {% else %}
+                            <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                        {% endif %}
                     {% endfor %}
                 {% else %}
-                    <a href="?{{ prefix }}_pa=1">1</a>
+                    <a href="{{ baseurl.pa }}{{ prefix }}_pa=1">1</a>
                     {{ ellipsis }}
                     {% with leftslice=current_page|subtract:3 %}
                         {% for page in items.paginator.page_range|dynamic_slice_left:leftslice|slice:":5" %}
-                        <a class="{% if page = current_page %}active{% else %}ajaxurl{% endif %}" href="?{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                            {% if page = current_page %}
+                                <span class="active" href="#">{{ page }}</span>
+                            {% else %}
+                                <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ page }}">{{ page }}</a>
+                            {% endif %}
                         {% endfor %}
                     {% endwith %}
                     {{ ellipsis }}
-                    <a href="?{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
+                    <a href="{{ baseurl.pa }}{{ prefix }}_pa={{ num_pages }}">{{ num_pages }}</a>
                 {% endif %}
             {% endif %}
         {% endif %}

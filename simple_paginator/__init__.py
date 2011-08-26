@@ -1,5 +1,7 @@
 # coding=utf-8
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from urlparse import parse_qs
+from urllib import urlencode
 
 
 class SimplePaginator(object):
@@ -24,6 +26,49 @@ class SimplePaginator(object):
         self.columns = columns
         self.per_page = per_page
         self.orphans = orphans
+
+    def get_base_url(self):
+        '''Get query string from request, remove all necessary parts and return
+        two variants - one for the page suffix, one for the order suffix.
+
+        '''
+        # Get querystring and path, initialize variables
+        qsd = parse_qs(self.request.META['QUERY_STRING'])
+        path = self.request.META['PATH_INFO']
+        qs_pa = qs_or = ''
+        qs = baseurl = {}
+
+        # Remove arguments that mighmight overwritten
+        if qsd:
+            if self.prefix + '_pa' in qsd:
+                qs_pa = qsd.pop(self.prefix + '_pa')[0]
+            if self.prefix + '_or' in qsd:
+                qs_or = qsd.pop(self.prefix + '_or')[0]
+
+        # Get querystring for both suffix variants
+        qs_base = [(k, qsd[k][0]) for k in qsd]
+        if qs_or:
+            qs['pa'] = urlencode(qs_base + [(self.prefix + '_or', qs_or)])
+        if qs_pa:
+            qs['or'] = urlencode(qs_base + [(self.prefix + '_pa', qs_pa)])
+
+        # Build base url
+        if 'pa' in qs:
+            baseurl['pa'] = '%s?%s&' % (path, qs['pa'])
+        if 'or' in qs:
+            baseurl['or'] = '%s?%s&' % (path, qs['or'])
+        if qsd:
+            if not 'pa' in baseurl:
+                baseurl['pa'] = '%s?%s&' % (path, urlencode(qs_base))
+            if not 'or' in baseurl:
+                baseurl['or'] = '%s?%s&' % (path, urlencode(qs_base))
+        else:
+            if not 'pa' in baseurl:
+                baseurl['pa'] = path + '?'
+            if not 'or' in baseurl:
+                baseurl['or'] = path + '?'
+
+        return baseurl
 
     def paginate(self):
         # Make sure page number is an int. If not, deliver first page.
@@ -61,7 +106,10 @@ class SimplePaginator(object):
         except (EmptyPage, InvalidPage):
             items = self.paginator.page(self.paginator.num_pages)
 
-        return items, order
+        # Get base url
+        baseurl = self.get_base_url()
+
+        return items, order, baseurl
 
 
 def paginate(*args, **kwargs):
