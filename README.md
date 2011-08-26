@@ -1,15 +1,13 @@
 django-simplepaginator
 ======================
 
-django-simplepaginator is a small wrapper around the standard Django paginator. It simplifies the
-creation of a paginator and provides templates for column titles and page navigation. It supports
-sorting and orphans.
+django-simplepaginator is a small wrapper around the standard Django paginator. The goal of
+django-simplepaginator is _not_ to replace the Django paginator with yet another kind of pagination
+interface. It just simplifies the creation of a pagination and provides templates for column
+titles and page navigation. It supports sorting and orphans.
 
-Most of the display logic is done inside the templates. That's why those templates are pretty ugly,
-sorry about that...
-
-Install
--------
+Installation
+------------
 
 Copy the messagegroups folder to your project or install it into your pythonpath:
 
@@ -97,12 +95,15 @@ If the column feature is not used, some parts can be omitted:
 </div>
 ```
 
-Customize
----------
+Customization
+-------------
 
 You can customize the paginator header and control templates by copying them to your project
 folder and editing them, or by adding completely new templates. They should be put in a
 directory called "simple_paginator" inside your template folder.
+
+Please keep in mind that most of the control logic is done inside those templates, so be careful
+changing them.
 
 License
 -------
