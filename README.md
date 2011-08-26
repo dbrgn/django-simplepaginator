@@ -47,13 +47,14 @@ columns = (
     ('Column2', 'modelfield2'),
     ('Column3', 'modelfield3'),
 )
-items, order = simple_paginator.paginate(request, prefix, functions, columns)
+items, order, baseurl = simple_paginator.paginate(request, prefix, functions, columns)
 
 context = {
     'items': items,
     'prefix': prefix,
     'columns': columns,
-    'order': order
+    'order': order,
+    'baseurl': baseurl
 }
 return render_to_response('template.html', context)
 ```
