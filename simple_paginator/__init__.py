@@ -1,7 +1,10 @@
 # coding=utf-8
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
-from urlparse import parse_qs
 from urllib import urlencode
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from cgi import parse_qs
 
 
 class SimplePaginator(object):
