@@ -30,6 +30,8 @@ The SimplePaginator object accepts the following keyword arguments:
 In the view, use the `paginate()`-shortcutfunction to return pagination items. Remember that each
 pagination on a page must have a distinct prefix.
 
+Columns can be marked as non-sortable by setting the sort key to `None`.
+
 ### Example:
 
 ```python
@@ -45,7 +47,7 @@ prefix = 'itemlist'
 columns = (
     ('Column1', 'modelfield1'),
     ('Column2', 'modelfield2'),
-    ('Column3', 'modelfield3'),
+    ('Column3', None),
 )
 items, order, baseurl = simple_paginator.paginate(request, prefix, functions, columns)
 
@@ -81,7 +83,7 @@ And in the template:
 </div>
 ```
 
-If the column feature is not used, some parts can be omitted:
+If the column/sorting feature is not used, some parts can be omitted:
 
 ```html
 <h1>Pagination demo</h1>
@@ -105,6 +107,23 @@ directory called "simple_paginator" inside your template folder.
 
 Please keep in mind that most of the control logic is done inside those templates, so be careful
 changing them.
+
+Changelog
+---------
+
+v0.2.2 (2011-09-07)
+
+- [add] Feature to mark columns as non-sortable
+
+v0.2.1 (2011-08-30)
+
+- [bug] Fixed compatibility with Python 2.5
+
+v0.2 (2011-08-26)
+
+- [add] Published django-simplepaginator on Github
+- [bug] Fixed critical bugs in view and templates
+- [bug] Fixed problems with setup.py
 
 License
 -------
