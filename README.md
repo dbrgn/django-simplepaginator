@@ -13,6 +13,10 @@ Copy the simple_paginator folder to your project or install it into your pythonp
 
     # python setup.py install
 
+If you use pip, you can also install it directly using the -e parameter:
+
+    # pip install -e git://github.com/FactorAG/django-simplepaginator.git#egg=simple_paginator
+
 Then add simple_paginator to your `INSTALLED_APPS` setting.
 
 Usage
