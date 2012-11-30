@@ -15,7 +15,7 @@ Copy the simple_paginator folder to your project or install it into your pythonp
 
 If you use pip, you can also install it directly using the -e parameter:
 
-    # pip install -e git://github.com/FactorAG/django-simplepaginator.git#egg=simple_paginator
+    # pip install -e git://github.com/dbrgn/django-simplepaginator.git#egg=simple_paginator
 
 Then add simple_paginator to your `INSTALLED_APPS` setting.
 
@@ -132,7 +132,7 @@ v0.2 (2011-08-26)
 License
 -------
 
-Copyright 2011 Factor AG (http://factor.ch/)
+Copyright 2011 Danilo Bargen (http://dbrgn.ch/)
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU
 Lesser General Public License as published by the Free Software Foundation, either version 3 of the
