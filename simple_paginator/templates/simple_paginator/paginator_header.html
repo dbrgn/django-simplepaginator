@@ -2,20 +2,18 @@
 
 {% with current_page=items.number %}
 
-<div class="paginator_header">
-    <tr>
-        {% for column in columns %}
-        <th>
-            {% if column.1 %}
-                <a href="{{ baseurl.or }}{{ prefix }}_or={% if order = forloop.counter %}{{ 0|subtract:order }}{% else %}{{ forloop.counter }}{% endif %}"
-                   class="{% if forloop.counter = order|absolute %}{% if order < 0 %}desc{% else %}asc{% endif %}{% endif %}">{{ column.0 }}</a>
-            {% endif %}
-            {% if not column.1 %}
-                <span>{{ column.0 }}</span>
-            {% endif %}
-        </th>
-        {% endfor %}
-    </tr> 
-</div>
+<tr class="paginator_header">
+    {% for column in columns %}
+    <th>
+        {% if column.1 %}
+            <a href="{{ baseurl.or }}{{ prefix }}_or={% if order = forloop.counter %}{{ 0|subtract:order }}{% else %}{{ forloop.counter }}{% endif %}"
+               class="{% if forloop.counter = order|absolute %}{% if order < 0 %}desc{% else %}asc{% endif %}{% endif %}">{{ column.0 }}</a>
+        {% endif %}
+        {% if not column.1 %}
+            <span>{{ column.0 }}</span>
+        {% endif %}
+    </th>
+    {% endfor %}
+</tr>
 
 {% endwith %}
