@@ -3,7 +3,6 @@ django-simplepaginator
 
 [![Build Status](https://travis-ci.org/dbrgn/django-simplepaginator.png)]
 (https://travis-ci.org/dbrgn/django-simplepaginator)
-
 [![Build Status](https://pypip.in/d/django-simplepaginator/badge.png)]
 (https://pypi.python.org/pypi/simple_paginator)
 
