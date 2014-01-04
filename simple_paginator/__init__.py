@@ -90,9 +90,16 @@ class SimplePaginator(object):
         # First, check if data supports order_by (e.g. a queryset)
         # TODO default ordering feature
         if hasattr(self.data, 'order_by') and self.columns and order:
-            order_str = '%s' if order > 0 else '-%s'
-            order_key = order_str % self.columns[abs(order) - 1][1]
-            self.data = self.data.order_by(order_key)
+            key = self.columns[abs(order) - 1][1]
+            if hasattr(self.data, 'model') and hasattr(self.data.model, key):
+                method = getattr(self.data.model, key)
+                if callable(method):
+                    self.data = sorted(self.data, key=method,
+                        reverse=False if order > 0 else True)
+            else:
+                order_str = '%s' if order > 0 else '-%s'
+                order_key = order_str % key
+                self.data = self.data.order_by(order_key)
 
         # If data doesn't support order_by, sort by index
         elif order:
