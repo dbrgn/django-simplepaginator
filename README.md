@@ -1,6 +1,11 @@
 django-simplepaginator
 ======================
 
+[![Build Status](https://travis-ci.org/dbrgn/django-simplepaginator.png)]
+(https://travis-ci.org/dbrgn/django-simplepaginator)
+[![Build Status](https://pypip.in/d/django-simplepaginator/badge.png)]
+(https://pypi.python.org/pypi/simple_paginator)
+
 django-simplepaginator is a small wrapper around the standard Django paginator. The goal of
 django-simplepaginator is _not_ to replace the Django paginator with yet another kind of pagination
 interface. It just simplifies the creation of a pagination and provides templates for column
