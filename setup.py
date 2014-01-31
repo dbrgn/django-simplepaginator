@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='simple_paginator',
-      version='0.3.0',
+      version='0.3.1',
       description='A simple wrapper around the Django paginator',
       author='Factor AG',
       author_email='webmaster@factor.ch',

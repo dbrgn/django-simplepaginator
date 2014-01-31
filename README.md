@@ -120,6 +120,10 @@ changing them.
 Changelog
 ---------
 
+v0.3.1 (2014-01-31)
+
+- [add] Added possibility to sort by model methods (#2)
+
 v0.3.0 (2013-08-21)
 
 - [bug] Removed `<div>` from `paginator_header.html` template (#1)
