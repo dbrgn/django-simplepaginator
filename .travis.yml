@@ -11,4 +11,4 @@ install:
     - pip install -q Django==$DJANGO_VERSION --use-mirrors
     - python setup.py -q install
 script:
-    - python simple_paginator/tests.py
+    - python app_test_runner.py simple_paginator
