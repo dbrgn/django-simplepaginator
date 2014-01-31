@@ -1,0 +1,65 @@
+[
+    {
+        "pk": 1,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 23,
+            "second_integer_field": 3
+        }
+    },
+    {
+        "pk": 2,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 1,
+            "second_integer_field": 100
+        }
+    },
+    {
+        "pk": 3,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 118,
+            "second_integer_field": 11
+        }
+    },
+    {
+        "pk": 4,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 44,
+            "second_integer_field": 2
+        }
+    },
+    {
+        "pk": 5,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 12,
+            "second_integer_field": 1002
+        }
+    },
+    {
+        "pk": 6,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 21,
+            "second_integer_field": 1
+        }
+    },
+    {
+        "pk": 7,
+        "model": "simple_paginator.mockmodel",
+        "fields": {
+            "char_field": "test",
+            "integer_field": 99,
+            "second_integer_field": 100
+        }
+    }
+]
